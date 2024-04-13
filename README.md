@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+# Effitasks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Este proyecto esta aún bajo construcción
 
-Currently, two official plugins are available:
+Este es el repositorio de Effitasks, una app web de administración de tareas, que estoy elaborando, en principio, por asuntos prácticos y de aprendizaje. Al lanzar la primera versión de la aplicación, como usuario serás capaz de:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Registrarte con Email, Nombre, Apellido, Numero de Telefono y (opcionalmente) foto de perfil. (No, no habrá contraseña, la autenticación se manejara mediante email o telefono, un enfoque mucho más seguro)
+- Iniciar sesión con la cuenta que creaste.
+- (Opcionalmente) Iniciar sesión con Google o Facebook.
+- Crear tareas con un título, una descripción, una fecha y una opción para poner si es o no repetitiva.
+- Cambiar tu foto de perfil, tu nombre y tu telefono.
+- Ser recordado por la aplicación, mediante notificaciones push y/o por email.
 
-## Expanding the ESLint configuration
+Para una segunda versión de la aplicación, además de lo mencionado anteriormente, serás capaz de:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Mandar solicitudes de conexión a otros usuarios.
+- Crear grupos de tareas con otros usuarios.
+- Invitar a otros usuarios a tu grupo.
+- Eliminar a otros usuarios de tu grupo.
+- Otorgar roles a otros usuarios de tu grupo.
+- Leer, crear, actualizar y eliminar tareas del grupo que creaste o en el que estes.
 
-- Configure the top-level `parserOptions` property like this:
+  El stack de tecnologías que estoy utilizando para el proyecto es:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+  Lenguaje de programación: Typescript (Javascript)
+  Framework Frontend: React
+  Librería UI: Material UI
+  Librerías de testing: Vitest y React Testing Library
+  Contenerización: Docker
+  Backend As A Services (BaaS): Supabase
+  Gestor de estado: Redux Toolkit
+  Fetching y caching de datos: Redux Toolkit Query
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+  Hasta ahora este es el progreso del proyecto:
+
+  Landing Page: Esta es la página inicial del proyecto, en la que el usuario podra ver que es la aplicación, de que trata, y, opcionalmente, podra registrarse o iniciar sesión si presiona uno de los botones que ejecuten tal acción:
+
+  ![image](https://github.com/AdrianPolanco/Effitasks/assets/116674818/d928d512-9123-499a-a300-e9aaed21f5d5)
+  ![image](https://github.com/AdrianPolanco/Effitasks/assets/116674818/64d67908-7aac-4099-87f8-4b1230b59193)
+
+Queda pendiente hacerla responsive.
