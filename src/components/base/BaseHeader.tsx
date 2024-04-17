@@ -1,6 +1,8 @@
 import { AppBar, Box, Toolbar, Typography, SxProps } from "@mui/material";
 import { TaskAlt } from "@mui/icons-material";
-import { ReactNode } from "react";
+import { ReactNode, useContext, useState } from "react";
+import { LandingContext } from "../contexts/LandingContext";
+import BaseMenu from "./BaseMenu";
 
 const BaseHeader = ({
     children,
@@ -11,6 +13,8 @@ const BaseHeader = ({
     toolBarStyles?: SxProps;
     appBarStyles?: SxProps;
 }) => {
+    const { isMobile } = useContext(LandingContext);
+    const [open, setOpen] = useState(false);
     return (
         <AppBar position="sticky" sx={{ ...appBarStyles }}>
             <Toolbar
@@ -35,7 +39,16 @@ const BaseHeader = ({
                         EffiTasks
                     </Typography>
                 </Box>
-                {children}
+
+                <Box>
+                    {isMobile ? (
+                        <BaseMenu open={open} setOpen={setOpen}>
+                            {children}
+                        </BaseMenu>
+                    ) : (
+                        children
+                    )}
+                </Box>
             </Toolbar>
         </AppBar>
     );

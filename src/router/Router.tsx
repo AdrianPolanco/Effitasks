@@ -1,14 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
-import Landing from "../pages/landing/Landing";
+import Landing from "../pages/Landing/Landing";
+import SignUp from "../pages/SignUp/SignUp";
+import { ThemeProvider } from "@emotion/react";
+import { mainTheme } from "../features/themes/app/mainTheme";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Landing />,
+        element: (
+            <ThemeProvider theme={mainTheme}>
+                <Landing />
+            </ThemeProvider>
+        ),
     },
     {
         path: "/register",
-        element: <div>Register</div>,
+        element: <SignUp />,
     },
     {
         path: "/login",

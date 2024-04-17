@@ -1,17 +1,15 @@
-import { Box, Button, Container, Typography, useTheme } from "@mui/material";
-import {
-    MoneyOff,
-    School,
-    LockReset,
-    Upgrade,
-    Devices,
-    ArrowForward,
-} from "@mui/icons-material";
-import Feature from "../../assets/remember.jpg";
+import { Box, Button, Container, Typography } from "@mui/material";
+import { ArrowForward } from "@mui/icons-material";
+import Feature from "./Feature";
+import FeatureImage from "../../assets/remember.jpg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LandingContext } from "../contexts/LandingContext";
+import { features } from "./FeaturesData";
+import { Guid } from "guid-typescript";
 
 const LandingFeatures = () => {
-    const theme = useTheme();
+    const { isMobile, theme } = useContext(LandingContext);
 
     return (
         <Box
@@ -22,104 +20,29 @@ const LandingFeatures = () => {
                 padding: 10,
             }}
         >
-            <Box sx={{ textAlign: "center" }}>
+            <Box
+                sx={{ textAlign: "center", color: theme.palette.primary.main }}
+            >
                 <h2>Our Features</h2>
             </Box>
-            <Box sx={{ display: "flex", gap: 2 }}>
-                <article
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <MoneyOff sx={{ color: theme.palette.primary.main }} />
-                    <h3 style={{ color: theme.palette.primary.main }}>
-                        100% Free
-                    </h3>
-                    <p>
-                        Our app is completely free to use, you will not get any
-                        kind of bill due to its use.
-                    </p>
-                </article>
-
-                <article
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <School sx={{ color: theme.palette.primary.main }} />
-                    <h3 style={{ color: theme.palette.primary.main }}>
-                        Usable
-                    </h3>
-                    <p>
-                        Our app is easy to use and easy to learn, so you will be
-                        able to take advantage of it in no time.
-                    </p>
-                </article>
-                <article
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <LockReset sx={{ color: theme.palette.primary.main }} />
-                    <h3 style={{ color: theme.palette.primary.main }}>
-                        Secure
-                    </h3>
-                    <p>
-                        Our authentication method is based on the email you
-                        provided when signing up, giving you absolute control on
-                        the access to your account.
-                    </p>
-                </article>
-                <article
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <Devices sx={{ color: theme.palette.primary.main }} />
-                    <h3 style={{ color: theme.palette.primary.main }}>
-                        Adaptable
-                    </h3>
-                    <p>
-                        Our app is developed to be used whenever you need it, be
-                        it on your phone, tablet or computer.
-                    </p>
-                </article>
-                <article
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <Upgrade sx={{ color: theme.palette.primary.main }} />
-                    <h3 style={{ color: theme.palette.primary.main }}>
-                        Dynamic
-                    </h3>
-                    <p>
-                        Our app is constantly being updated with new features to
-                        bring the user more valuable features.
-                    </p>
-                </article>
+            <Box
+                sx={{
+                    display: "flex",
+                    gap: isMobile ? 10 : 2,
+                    flexDirection: isMobile ? "column" : "row",
+                }}
+            >
+                {features.map((feature) => (
+                    <Feature key={Guid.create().toString()} {...feature} />
+                ))}
             </Box>
-            <Box sx={{ display: "flex", gap: 5 }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    gap: 5,
+                    flexDirection: isMobile ? "column" : "row",
+                }}
+            >
                 <Container
                     sx={{
                         width: "300px",
@@ -128,7 +51,7 @@ const LandingFeatures = () => {
                     }}
                 >
                     <img
-                        src={Feature}
+                        src={FeatureImage}
                         alt="Remember your tasks"
                         style={{
                             width: "100%",

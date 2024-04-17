@@ -1,23 +1,33 @@
 import { ArrowForward } from "@mui/icons-material";
-import { Box, Button, Container, Typography, useTheme } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import Designing from "../../assets/designing.jpg";
 import Planning from "../../assets/planning.jpg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LandingContext } from "../contexts/LandingContext";
 
 const LandingHero = () => {
-    const theme = useTheme();
+    const { isMobile, theme } = useContext(LandingContext);
     return (
         <Box
             sx={{
                 backgroundColor: theme.palette.primary.light,
                 color: theme.palette.primary.contrastText,
-                height: "100vh",
+                height: isMobile ? "185vh" : "100vh",
+                padding: isMobile ? 5 : 0,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
             }}
         >
-            <Container sx={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <Container
+                sx={{
+                    display: "flex",
+                    gap: 10,
+                    alignItems: "center",
+                    flexDirection: isMobile ? "column" : "row",
+                }}
+            >
                 <Box
                     sx={{
                         display: "flex",

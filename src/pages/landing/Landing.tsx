@@ -1,21 +1,21 @@
-import { Box, ThemeProvider } from "@mui/material";
+import { Box } from "@mui/material";
 import "../../App.css";
-import LandingHeader from "../../components/landing/LandingHeader";
-import { mainTheme } from "../../features/themes/app/mainTheme";
 import LandingHero from "../../components/landing/LandingHero";
 import LandingFeatures from "../../components/landing/LandingFeatures";
 import LandingFooter from "../../components/landing/LandingFooter";
+import { LandingProvider } from "../../components/contexts/LandingContext";
+import LandingHeader from "../../components/landing/LandingHeader";
 
 const Landing = () => {
     return (
-        <ThemeProvider theme={mainTheme}>
+        <LandingProvider>
+            <LandingHeader />
             <Box m={0}>
-                <LandingHeader />
                 <LandingHero />
                 <LandingFeatures />
                 <LandingFooter />
             </Box>
-        </ThemeProvider>
+        </LandingProvider>
     );
 };
 
