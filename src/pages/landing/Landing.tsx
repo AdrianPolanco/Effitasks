@@ -3,19 +3,19 @@ import "../../App.css";
 import LandingHero from "../../components/landing/LandingHero";
 import LandingFeatures from "../../components/landing/LandingFeatures";
 import LandingFooter from "../../components/landing/LandingFooter";
-import { LandingProvider } from "../../components/contexts/LandingContext";
+import { AppProvider } from "../../components/contexts/AppContext";
 import LandingHeader from "../../components/landing/LandingHeader";
 
 const Landing = () => {
     return (
-        <LandingProvider>
+        <AppProvider>
             <LandingHeader />
             <Box m={0}>
                 <LandingHero />
                 <LandingFeatures />
                 <LandingFooter />
             </Box>
-        </LandingProvider>
+        </AppProvider>
     );
 };
 

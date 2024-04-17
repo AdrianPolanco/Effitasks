@@ -15,7 +15,11 @@ export const router = createBrowserRouter([
     },
     {
         path: "/register",
-        element: <SignUp />,
+        element: (
+            <ThemeProvider theme={mainTheme}>
+                <SignUp />
+            </ThemeProvider>
+        ),
     },
     {
         path: "/login",

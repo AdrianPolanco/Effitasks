@@ -4,10 +4,10 @@ import Designing from "../../assets/designing.jpg";
 import Planning from "../../assets/planning.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { LandingContext } from "../contexts/LandingContext";
+import { AppContext } from "../contexts/AppContext";
 
 const LandingHero = () => {
-    const { isMobile, theme } = useContext(LandingContext);
+    const { isMobile, theme } = useContext(AppContext);
     return (
         <Box
             sx={{

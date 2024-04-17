@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { LandingContext } from "../contexts/LandingContext";
+import { AppContext } from "../contexts/AppContext";
 import { SvgIconComponent } from "@mui/icons-material";
 
 export type FeatureProps = {
@@ -9,7 +9,7 @@ export type FeatureProps = {
 };
 
 const Feature = ({ title, details, icon: Icon }: FeatureProps) => {
-    const { theme } = useContext(LandingContext);
+    const { theme } = useContext(AppContext);
     return (
         <article
             style={{

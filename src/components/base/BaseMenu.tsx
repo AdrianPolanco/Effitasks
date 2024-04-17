@@ -8,9 +8,10 @@ interface MenuWrapperProps {
     children: React.ReactNode;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    color: string;
 }
 
-const BaseMenu = ({ children, open, setOpen }: MenuWrapperProps) => {
+const BaseMenu = ({ children, open, setOpen, color }: MenuWrapperProps) => {
     return (
         <Fragment>
             <IconButton
@@ -19,7 +20,7 @@ const BaseMenu = ({ children, open, setOpen }: MenuWrapperProps) => {
                 aria-label="menu"
                 onClick={() => setOpen(!open)}
             >
-                <MenuIcon color="primary" />
+                <MenuIcon sx={{ color }} />
             </IconButton>
             <Menu
                 id="mobile-positioned-menu"

@@ -4,12 +4,12 @@ import Feature from "./Feature";
 import FeatureImage from "../../assets/remember.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { LandingContext } from "../contexts/LandingContext";
+import { AppContext } from "../contexts/AppContext";
 import { features } from "./FeaturesData";
 import { Guid } from "guid-typescript";
 
 const LandingFeatures = () => {
-    const { isMobile, theme } = useContext(LandingContext);
+    const { isMobile, theme } = useContext(AppContext);
 
     return (
         <Box

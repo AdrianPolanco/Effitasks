@@ -1,8 +1,15 @@
 import BaseHeader from "../base/BaseHeader";
 import { Link as Router } from "react-router-dom";
-import { Box, Button, MenuItem } from "@mui/material";
+import {
+    Box,
+    Button,
+    MenuItem,
+    SxProps,
+    THEME_ID,
+    appBarClasses,
+} from "@mui/material";
 import { useContext } from "react";
-import { LandingContext } from "../contexts/LandingContext";
+import { AppContext } from "../contexts/AppContext";
 import { Guid } from "guid-typescript";
 
 export type HeaderOptions = {
@@ -11,15 +18,27 @@ export type HeaderOptions = {
     important: boolean;
 };
 
-const Header = ({ headerOptions }: { headerOptions: HeaderOptions[] }) => {
-    const { isMobile, theme } = useContext(LandingContext);
-
-    return (
-        <BaseHeader
-            toolBarStyles={{
+const Header = ({
+    headerOptions,
+    toolbarStyles,
+    appBarStyles,
+    logoColor,
+}: {
+    headerOptions: HeaderOptions[];
+    toolbarStyles?: SxProps;
+    appBarStyles?: SxProps;
+    logoColor: string;
+}) => {
+    const { isMobile, theme } = useContext(AppContext);
+    /*  toolBarStyles={{
                 backgroundColor: theme.palette.primary.light,
             }}
-            appBarStyles={{ boxShadow: "none" }}
+            appBarStyles={{ boxShadow: "none" }} */
+    return (
+        <BaseHeader
+            toolBarStyles={toolbarStyles}
+            appBarStyles={appBarStyles}
+            logoColor={logoColor}
         >
             {isMobile ? (
                 headerOptions?.map((option) => (
@@ -29,7 +48,7 @@ const Header = ({ headerOptions }: { headerOptions: HeaderOptions[] }) => {
                             style={{
                                 textDecoration: "none",
                                 color: option.important
-                                    ? theme.palette.primary.main
+                                    ? logoColor
                                     : theme.palette.primary.contrastText,
                             }}
                         >
@@ -51,13 +70,20 @@ const Header = ({ headerOptions }: { headerOptions: HeaderOptions[] }) => {
                             style={{
                                 textDecoration: "none",
                                 color: option.important
-                                    ? theme.palette.primary.main
+                                    ? logoColor
                                     : theme.palette.primary.contrastText,
                             }}
                         >
                             <Button
                                 sx={{
                                     fontWeight: 500,
+                                    backgroundColor: option.important
+                                        ? logoColor
+                                        : "transparent",
+                                    color: option.important
+                                        ? theme.palette.primary.contrastText
+                                        : logoColor,
+                                    borderColor: logoColor,
                                 }}
                                 variant={
                                     option.important ? "contained" : "outlined"

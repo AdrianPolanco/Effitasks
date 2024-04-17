@@ -3,21 +3,21 @@ import { useMediaQuery } from "@mui/material";
 import { ReactNode, createContext } from "react";
 import { mainTheme } from "../../features/themes/app/mainTheme";
 
-export const LandingContext = createContext<LandingContextType>({
+export const AppContext = createContext<AppContextType>({
     isMobile: false,
     theme: mainTheme,
 });
-type LandingContextType = {
+type AppContextType = {
     isMobile: boolean;
     theme: Theme;
 };
 
-export const LandingProvider = ({ children }: { children: ReactNode }) => {
+export const AppProvider = ({ children }: { children: ReactNode }) => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
     return (
-        <LandingContext.Provider value={{ isMobile: matches, theme }}>
+        <AppContext.Provider value={{ isMobile: matches, theme }}>
             {children}
-        </LandingContext.Provider>
+        </AppContext.Provider>
     );
 };
