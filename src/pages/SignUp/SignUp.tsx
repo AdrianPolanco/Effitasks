@@ -1,45 +1,65 @@
 import { Button, Grid, TextField, useTheme } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../../components/signup/SignUpHeader";
 import BaseForm from "../../components/base/BaseForm";
 import CustomCopyright from "../../components/common/CustomCopyright";
+import { ChangeEvent, FormEvent, useState } from "react";
+import "react-phone-input-2/lib/style.css";
+import {
+    validateEmail,
+    validateName,
+    validateUsername,
+} from "../../helpers/Validators";
 
 const SignUp = () => {
     const theme = useTheme();
+    const [values, setValues] = useState({
+        username: {
+            value: "",
+            clicked: false,
+            valid: false,
+        },
+        name: {
+            value: "",
+            clicked: false,
+            valid: false,
+        },
+        email: {
+            value: "",
+            clicked: false,
+            valid: false,
+        },
+    });
+    const validateForm = () => {
+        setValues({
+            ...values,
+            username: {
+                ...values.username,
+                valid: validateUsername(values.username.value),
+            },
+            name: { ...values.name, valid: validateName(values.name.value) },
+            email: {
+                ...values.email,
+                valid: validateEmail(values.email.value),
+            },
+        });
+    };
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        console.log("Submitted");
+    };
 
     return (
         <BaseForm
             title="Sign Up"
             color={{ color: "secondary.main" }}
-            formIcon={<LockOutlinedIcon />}
+            formIcon={<AppRegistrationIcon />}
             headerComponent={<SignUpHeader />}
             copyrightComponent={<CustomCopyright color="secondary" />}
             showBackgroundImage={true}
         >
-            {/*<SignUpHeader />
-            <Grid container component="main" sx={{ height: "100vh" }}>
-                <CssBaseline />
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage:
-                            "url(https://source.unsplash.com/random?wallpapers)",
-                        backgroundRepeat: "no-repeat",
-                        backgroundColor: (t) =>
-                            t.palette.mode === "light"
-                                ? t.palette.grey[50]
-                                : t.palette.grey[900],
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                    }}
-                />*/}
-
-            {/*<LockOutlinedIcon />*/}
-
             <TextField
                 margin="normal"
                 required
@@ -50,8 +70,24 @@ const SignUp = () => {
                 aria-required={true}
                 id="username"
                 color="secondary"
-                autoComplete="username"
+                error={values.username.clicked && !values.username.valid}
                 helperText="Example: johnDoe5642"
+                onFocus={() =>
+                    setValues({
+                        ...values,
+                        username: { ...values.username, clicked: true },
+                    })
+                }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setValues({
+                        ...values,
+                        username: {
+                            ...values.username,
+                            value: e.target.value,
+                            valid: validateUsername(e.target.value),
+                        },
+                    })
+                }
             />
             <TextField
                 margin="normal"
@@ -60,46 +96,76 @@ const SignUp = () => {
                 name="name"
                 label="Name"
                 type="text"
+                error={values.name.clicked && !values.name.valid}
                 aria-required={true}
                 id="name"
                 color="secondary"
-                autoComplete="name"
                 helperText="Example: John Doe"
+                onFocus={() =>
+                    setValues({
+                        ...values,
+                        name: { ...values.name, clicked: true },
+                    })
+                }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setValues({
+                        ...values,
+                        name: {
+                            ...values.name,
+                            value: e.target.value,
+                            valid: validateName(e.target.value),
+                        },
+                    })
+                }
             />
+
             <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
+                type="email"
+                error={values.email.clicked && !values.email.valid}
                 label="Email Address"
                 name="email"
-                autoComplete="email"
                 color="secondary"
-                autoFocus
                 helperText="A valid email: johndoe@gmail.com"
+                onFocus={() =>
+                    setValues({
+                        ...values,
+                        email: { ...values.email, clicked: true },
+                    })
+                }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setValues({
+                        ...values,
+                        email: {
+                            ...values.email,
+                            value: e.target.value,
+                            valid: validateEmail(e.target.value),
+                        },
+                    })
+                }
             />
 
-            <TextField
-                margin="normal"
-                fullWidth
-                id="phone"
-                label="Phone number"
-                name="phone"
-                autoComplete="phone"
-                color="secondary"
-                autoFocus
-                helperText="A phone number: +18297486987"
-            />
             <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="secondary"
+                disabled={
+                    values.username.valid &&
+                    values.name.valid &&
+                    values.email.valid
+                        ? false
+                        : true
+                }
                 sx={{
                     mt: 3,
                     mb: 2,
                     color: theme.palette.primary.contrastText,
                 }}
+                onClick={handleSubmit}
             >
                 Sign Up
             </Button>
@@ -120,7 +186,6 @@ const SignUp = () => {
                     </Link>
                 </Grid>
             </Grid>
-            {/* <Copyright />*/}
         </BaseForm>
     );
 };
