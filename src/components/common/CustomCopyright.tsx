@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { AppMuiTheme } from "../../types/AppMuiTheme";
 
-function Copyright({ color }: AppMuiTheme) {
+function CustomCopyright({ color }: AppMuiTheme) {
     return (
         <Typography variant="body2" color="text.secondary" align="center">
             Copyright ©
@@ -14,4 +14,4 @@ function Copyright({ color }: AppMuiTheme) {
     );
 }
 
-export default Copyright;
+export default CustomCopyright;

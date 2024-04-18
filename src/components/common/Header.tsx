@@ -1,22 +1,17 @@
 import BaseHeader from "../base/BaseHeader";
 import { Link as Router } from "react-router-dom";
-import { Box, Button, MenuItem, SxProps } from "@mui/material";
+import { Box, Button, MenuItem } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { Guid } from "guid-typescript";
-import { HeaderOptions } from "../../types/HeaderOptions";
+import { HeaderProps } from "../../types/HeaderProps";
 
 const Header = ({
     headerOptions,
     toolbarStyles,
     appBarStyles,
     logoColor,
-}: {
-    headerOptions: HeaderOptions[];
-    toolbarStyles?: SxProps;
-    appBarStyles?: SxProps;
-    logoColor: string;
-}) => {
+}: HeaderProps) => {
     const { isMobile, theme } = useContext(AppContext);
 
     return (

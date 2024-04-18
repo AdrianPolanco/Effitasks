@@ -1,34 +1,23 @@
-import {
-    Avatar,
-    Box,
-    Button,
-    CssBaseline,
-    Grid,
-    Paper,
-    TextField,
-    Typography,
-    useTheme,
-} from "@mui/material";
-import React from "react";
+import { Button, Grid, TextField, useTheme } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../../components/signup/SignUpHeader";
-import { AppProvider } from "../../components/contexts/AppContext";
-import { Copyright } from "@mui/icons-material";
+import BaseForm from "../../components/base/BaseForm";
+import CustomCopyright from "../../components/common/CustomCopyright";
 
 const SignUp = () => {
     const theme = useTheme();
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
-    };
+
     return (
-        <AppProvider>
-            <SignUpHeader />
+        <BaseForm
+            title="Sign Up"
+            color={{ color: "secondary.main" }}
+            formIcon={<LockOutlinedIcon />}
+            headerComponent={<SignUpHeader />}
+            copyrightComponent={<CustomCopyright color="secondary" />}
+            showBackgroundImage={true}
+        >
+            {/*<SignUpHeader />
             <Grid container component="main" sx={{ height: "100vh" }}>
                 <CssBaseline />
                 <Grid
@@ -47,123 +36,92 @@ const SignUp = () => {
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                     }}
-                />
-                <Grid
-                    item
-                    xs={12}
-                    sm={8}
-                    md={5}
-                    component={Paper}
-                    elevation={6}
-                    square
-                >
-                    <Box
-                        sx={{
-                            my: 8,
-                            mx: 4,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
+                />*/}
+
+            {/*<LockOutlinedIcon />*/}
+
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="username"
+                label="Username"
+                type="text"
+                aria-required={true}
+                id="username"
+                color="secondary"
+                autoComplete="username"
+                helperText="Example: johnDoe5642"
+            />
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="name"
+                label="Name"
+                type="text"
+                aria-required={true}
+                id="name"
+                color="secondary"
+                autoComplete="name"
+                helperText="Example: John Doe"
+            />
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                color="secondary"
+                autoFocus
+                helperText="A valid email: johndoe@gmail.com"
+            />
+
+            <TextField
+                margin="normal"
+                fullWidth
+                id="phone"
+                label="Phone number"
+                name="phone"
+                autoComplete="phone"
+                color="secondary"
+                autoFocus
+                helperText="A phone number: +18297486987"
+            />
+            <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                sx={{
+                    mt: 3,
+                    mb: 2,
+                    color: theme.palette.primary.contrastText,
+                }}
+            >
+                Sign Up
+            </Button>
+            <Grid
+                container
+                sx={{
+                    marginTop: 5,
+                }}
+            >
+                <Grid item sx={{ marginBottom: 5 }}>
+                    <Link
+                        to="/login"
+                        style={{
+                            color: theme.palette.secondary.main,
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                        </Typography>
-                        <Box
-                            component="form"
-                            noValidate
-                            onSubmit={handleSubmit}
-                            sx={{ mt: 1 }}
-                        >
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="username"
-                                label="Username"
-                                type="text"
-                                aria-required={true}
-                                id="username"
-                                color="secondary"
-                                autoComplete="username"
-                                helperText="Example: johnDoe5642"
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="name"
-                                label="Name"
-                                type="text"
-                                aria-required={true}
-                                id="name"
-                                color="secondary"
-                                autoComplete="name"
-                                helperText="Example: John Doe"
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                color="secondary"
-                                autoFocus
-                                helperText="A valid email: johndoe@gmail.com"
-                            />
-
-                            <TextField
-                                margin="normal"
-                                fullWidth
-                                id="phone"
-                                label="Phone number"
-                                name="phone"
-                                autoComplete="phone"
-                                color="secondary"
-                                autoFocus
-                                helperText="A phone number: +18297486987"
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="secondary"
-                                sx={{
-                                    mt: 3,
-                                    mb: 2,
-                                    color: theme.palette.primary.contrastText,
-                                }}
-                            >
-                                Sign Up
-                            </Button>
-                            <Grid
-                                container
-                                sx={{
-                                    marginTop: 5,
-                                }}
-                            >
-                                <Grid item sx={{ marginBottom: 5 }}>
-                                    <Link
-                                        to="/login"
-                                        style={{
-                                            color: theme.palette.secondary.main,
-                                        }}
-                                    >
-                                        {"Already have an account? Sign In"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
-                            <Copyright />
-                        </Box>
-                    </Box>
+                        {"Already have an account? Sign In"}
+                    </Link>
                 </Grid>
             </Grid>
-        </AppProvider>
+            {/* <Copyright />*/}
+        </BaseForm>
     );
 };
 
