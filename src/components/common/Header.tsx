@@ -4,12 +4,7 @@ import { Box, Button, MenuItem, SxProps } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { Guid } from "guid-typescript";
-
-export type HeaderOptions = {
-    title: string;
-    path: string;
-    important: boolean;
-};
+import { HeaderOptions } from "../../types/HeaderOptions";
 
 const Header = ({
     headerOptions,
@@ -23,10 +18,7 @@ const Header = ({
     logoColor: string;
 }) => {
     const { isMobile, theme } = useContext(AppContext);
-    /*  toolBarStyles={{
-                backgroundColor: theme.palette.primary.light,
-            }}
-            appBarStyles={{ boxShadow: "none" }} */
+
     return (
         <BaseHeader
             toolBarStyles={toolbarStyles}

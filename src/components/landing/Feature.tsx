@@ -1,12 +1,6 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
-import { SvgIconComponent } from "@mui/icons-material";
-
-export type FeatureProps = {
-    title: string;
-    details: string;
-    icon?: SvgIconComponent;
-};
+import { FeatureProps } from "../../types/FeatureProps";
 
 const Feature = ({ title, details, icon: Icon }: FeatureProps) => {
     const { theme } = useContext(AppContext);

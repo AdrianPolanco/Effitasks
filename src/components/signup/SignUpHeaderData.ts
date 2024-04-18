@@ -1,4 +1,4 @@
-import { HeaderOptions } from "../common/Header";
+import { HeaderOptions } from "../../types/HeaderOptions";
 
 export const signUpHeaderData: HeaderOptions[] = [
     {

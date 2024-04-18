@@ -5,7 +5,8 @@ import {
     School,
     Upgrade,
 } from "@mui/icons-material";
-import { FeatureProps } from "./Feature";
+import { FeatureProps } from "../../types/FeatureProps";
+
 
 export const features: FeatureProps[] = [
     {

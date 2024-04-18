@@ -2,9 +2,7 @@ import {
     Avatar,
     Box,
     Button,
-    Checkbox,
     CssBaseline,
-    FormControlLabel,
     Grid,
     Paper,
     TextField,
@@ -16,19 +14,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../../components/signup/SignUpHeader";
 import { AppProvider } from "../../components/contexts/AppContext";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            Copyright ©
-            <Typography color="secondary" variant="h6">
-                Effitasks
-            </Typography>
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
+import { Copyright } from "@mui/icons-material";
 
 const SignUp = () => {
     const theme = useTheme();

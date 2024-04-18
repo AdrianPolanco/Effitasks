@@ -1,15 +1,9 @@
 import { IconButton, Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
+import { MenuWrapperProps } from "../../types/MenyWrapperProps";
 
 /**/
-
-interface MenuWrapperProps {
-    children: React.ReactNode;
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    color: string;
-}
 
 const BaseMenu = ({ children, open, setOpen, color }: MenuWrapperProps) => {
     return (
