@@ -1,13 +1,6 @@
 import BaseHeader from "../base/BaseHeader";
 import { Link as Router } from "react-router-dom";
-import {
-    Box,
-    Button,
-    MenuItem,
-    SxProps,
-    THEME_ID,
-    appBarClasses,
-} from "@mui/material";
+import { Box, Button, MenuItem, SxProps } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { Guid } from "guid-typescript";

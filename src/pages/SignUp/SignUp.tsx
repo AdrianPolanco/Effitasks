@@ -96,39 +96,62 @@ const SignUp = () => {
                                 margin="normal"
                                 required
                                 fullWidth
+                                name="username"
+                                label="Username"
+                                type="text"
+                                aria-required={true}
+                                id="username"
+                                color="secondary"
+                                autoComplete="username"
+                                helperText="Example: johnDoe5642"
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="name"
+                                label="Name"
+                                type="text"
+                                aria-required={true}
+                                id="name"
+                                color="secondary"
+                                autoComplete="name"
+                                helperText="Example: John Doe"
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
                                 id="email"
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
                                 color="secondary"
                                 autoFocus
+                                helperText="A valid email: johndoe@gmail.com"
                             />
+
                             <TextField
                                 margin="normal"
-                                required
                                 fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
+                                id="phone"
+                                label="Phone number"
+                                name="phone"
+                                autoComplete="phone"
                                 color="secondary"
-                                autoComplete="current-password"
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        value="remember"
-                                        color="secondary"
-                                    />
-                                }
-                                label="Remember me"
+                                autoFocus
+                                helperText="A phone number: +18297486987"
                             />
                             <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
                                 color="secondary"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{
+                                    mt: 3,
+                                    mb: 2,
+                                    color: theme.palette.primary.contrastText,
+                                }}
                             >
                                 Sign Up
                             </Button>
